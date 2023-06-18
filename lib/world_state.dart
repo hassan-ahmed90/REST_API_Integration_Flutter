@@ -37,7 +37,7 @@ class _WorldSatateState extends State<WorldSatate> with TickerProviderStateMixin
                 "Death":5,
               },
               animationDuration:  Duration(milliseconds: 1200),
-                chartType: ChartType.ring,
+               // chartType: ChartType.ring,
               // colorList: colorList ,
               legendOptions: LegendOptions(
                 legendPosition: LegendPosition.left,
