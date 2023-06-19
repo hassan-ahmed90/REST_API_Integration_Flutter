@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'Model/WorldStateModel.dart';
+import 'Services/state_services.dart';
 class WorldSatate extends StatefulWidget {
   const WorldSatate({Key? key}) : super(key: key);
 
@@ -23,6 +26,7 @@ class _WorldSatateState extends State<WorldSatate> with TickerProviderStateMixin
   ];
   @override
   Widget build(BuildContext context) {
+    StateServices stateServices = StateServices();
     return  SafeArea(
       child: Scaffold(
         body: Padding(
@@ -30,43 +34,66 @@ class _WorldSatateState extends State<WorldSatate> with TickerProviderStateMixin
           child: Column(
             children: [
               SizedBox(height : 30),
-              PieChart(
-                dataMap:  {
-                "Total": 20,
-                "Recovered":15,
-                "Death":5,
-              },
-              animationDuration:  Duration(milliseconds: 1200),
-               // chartType: ChartType.ring,
-              // colorList: colorList ,
-              legendOptions: LegendOptions(
-                legendPosition: LegendPosition.left,
-              ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric( vertical: 10),
-                child: Card(
-                  child: Column(
-                    children: [
-                      Reusable(title: 'Total', value: '100'),
-                      Reusable(title: 'Total', value: '100'),
-                      Reusable(title: 'Total', value: '100'),
 
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 10,),
-              InkWell(
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(child: Text("Track"),),
-                ),
-              )
+              FutureBuilder(
+                  future: stateServices.fetchWorldStateRecord(),
+                  builder: (
+                  context, AsyncSnapshot<WorldStateModel> snapshot){
+                    if(!snapshot.hasData){
+                      return Expanded(
+                        flex: 1,
+                          child: SpinKitFadingCircle(
+                            color: Colors.blue,
+                            size: 50,
+                            controller: _controller,
+
+                      ));
+                    }else{
+                      return Column(
+                        children: [
+                          PieChart(
+                            dataMap:  {
+                              "Total": 20,
+                              "Recovered":15,
+                              "Death":5,
+                            },
+                            animationDuration:  Duration(milliseconds: 1200),
+                            // chartType: ChartType.ring,
+                            // colorList: colorList ,
+                            legendOptions: LegendOptions(
+                              legendPosition: LegendPosition.left,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric( vertical: 10),
+                            child: Card(
+                              child: Column(
+                                children: [
+                                  Reusable(title: 'Total', value: '100'),
+                                  Reusable(title: 'Total', value: '100'),
+                                  Reusable(title: 'Total', value: '100'),
+
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          InkWell(
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(child: Text("Track"),),
+                            ),
+                          )
+                        ],
+                      );
+
+                    }
+              }),
+
 
 
             ],
