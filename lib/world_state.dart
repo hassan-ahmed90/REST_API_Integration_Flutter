@@ -53,13 +53,13 @@ class _WorldSatateState extends State<WorldSatate> with TickerProviderStateMixin
                         children: [
                           PieChart(
                             dataMap:  {
-                              "Total": 20,
-                              "Recovered":15,
-                              "Death":5,
+                              "Total": double.parse(snapshot.data!.cases!.toString()),
+                              "Recovered":double.parse(snapshot.data!.recovered!.toString()),
+                              "Death":double.parse(snapshot.data!.deaths!.toString()),
                             },
                             animationDuration:  Duration(milliseconds: 1200),
-                            // chartType: ChartType.ring,
-                            // colorList: colorList ,
+                             chartType: ChartType.ring,
+                             colorList: colorList ,
                             legendOptions: LegendOptions(
                               legendPosition: LegendPosition.left,
                             ),
