@@ -15,8 +15,6 @@ class WorldSatate extends StatefulWidget {
 class _WorldSatateState extends State<WorldSatate> with TickerProviderStateMixin{
   late final AnimationController _controller = AnimationController( duration:const Duration(seconds: 3),vsync: this,)..repeat();
 
-
-
   final colorList = <Color>[
          const Color(0xff4285F4),
     const Color(0xff1aa260),
@@ -94,89 +92,10 @@ class _WorldSatateState extends State<WorldSatate> with TickerProviderStateMixin
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>CountriesList()));
                         },
                       ),
-
                     ],
                   );
-
                 }
               }),
-
-
-
-              // FutureBuilder(
-              //     future: stateServices.fetchWorldStateRecord(),
-              //     builder: (
-              //     context, AsyncSnapshot<WorldStateModel>snapshot){
-              //       if(!snapshot.hasData){
-              //         return Expanded(
-              //           flex: 1,
-              //             child: SpinKitFadingCircle(
-              //               color: Colors.blue,
-              //               size: 50,
-              //               controller: _controller,
-              //
-              //         ));
-              //       }else{
-              //         return Column(
-              //           children: [
-              //             PieChart(
-              //               dataMap:  {
-              //                 "Total": double.parse(snapshot.data! .cases.toString()),
-              //                 "Recovered":double.parse(snapshot.data!.recovered.toString()),
-              //                 "Death":double.parse(snapshot.data!.deaths.toString()),
-              //               },
-              //               animationDuration:  Duration(milliseconds: 1200),
-              //                chartType: ChartType.ring,
-              //                colorList: colorList ,
-              //               legendOptions: LegendOptions(
-              //                 legendPosition: LegendPosition.left,
-              //               ),
-              //               chartValuesOptions: ChartValuesOptions(
-              //                 showChartValuesInPercentage: true,
-              //               ),
-              //             ),
-              //             Padding(
-              //               padding: EdgeInsets.symmetric( vertical: 10),
-              //               child: Card(
-              //                 child: Column(
-              //                   children: [
-              //                     Reusable(title: 'Total', value: snapshot.data!.cases.toString()),
-              //                     Reusable(title: 'Deaths', value: snapshot.data!.deaths.toString()),
-              //                     Reusable(title: 'Recovered', value: snapshot.data!.recovered.toString()),
-              //                     Reusable(title: 'Active', value: snapshot.data!.active.toString()),
-              //                     Reusable(title: 'Critical ', value: snapshot.data!.critical.toString()),
-              //                     Reusable(title: 'Today Deaths ', value: snapshot.data!.todayDeaths.toString()),
-              //                     Reusable(title: 'Today Recovered', value: snapshot.data!.todayRecovered.toString()),
-              //
-              //
-              //                   ],
-              //                 ),
-              //               ),
-              //             ),
-              //             SizedBox(height: 10,),
-              //             InkWell(
-              //               child: Container(
-              //                 height: 50,
-              //                 decoration: BoxDecoration(
-              //                   color: Colors.green,
-              //                   borderRadius: BorderRadius.circular(20),
-              //                 ),
-              //                 child: Center(child: Text("Track"),),
-              //               ),
-              //               onTap: (){
-              //
-              //                 Navigator.push(context, MaterialPageRoute(builder: (context)=>CountriesList()));
-              //
-              //               },
-              //             )
-              //           ],
-              //         );
-              //
-              //       }
-              // }),
-
-
-
             ],
           ),
         ),
