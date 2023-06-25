@@ -13,10 +13,7 @@ class StateServices{
       throw Exception("Fuck You");
     }
   }
-
-
   Future<List<dynamic>> CountryRecordApi () async{
-
     final response = await http.get(Uri.parse(AppUrls.countryUrl));
     var data;
     if(response.statusCode==200){

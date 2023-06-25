@@ -36,7 +36,7 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+     // backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(widget.name),
@@ -51,7 +51,7 @@ class _DetailScreenState extends State<DetailScreen> {
             children: [
               Padding(padding: EdgeInsets.all(10),
                 child:  Card(
-                  color: Colors.grey.shade400,
+                 // color: Colors.grey.shade400,
                   child: Column(
                     children: [
                       Reusable(title: "Cases", value: widget.cases.toString()),

@@ -83,10 +83,10 @@ class _WorldSatateState extends State<WorldSatate> with TickerProviderStateMixin
                         child: Container(
                           height: 50,
                           decoration: BoxDecoration(
-                            color: Colors.green,
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          child: Center(child: Text("Track"),),
+                          child: Center(child: Text("Track",style: TextStyle(color: Colors.white),),),
                         ),
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>CountriesList()));

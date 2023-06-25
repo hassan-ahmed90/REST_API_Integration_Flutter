@@ -67,18 +67,16 @@ class _CountriesListState extends State<CountriesList> {
                             children: [
                               InkWell(
                                 onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailScreen(
-                                  image: snapshot.data![index]["countryInfo"]["flag"],
-                                  name: snapshot.data![index]["country"],
+                                  totalCases: snapshot.data![index]['todayCases'],
+                                  image: snapshot.data![index]['countryInfo']['flag'],
+                                  name: snapshot.data![index]['country'],
+                                  cases: snapshot.data![index]['cases'],
                                   recovered: snapshot.data![index]['recovered'],
-                                  totalCases: snapshot.data![index]['cases'],
-                                  test: snapshot.data![index]['tests'],
-                                  totalDeaths: snapshot.data![index]['deaths'],
-                                  todayRecovered: snapshot.data![index]['todayRecovered'],
-                                  critical: snapshot.data![index]['critical'],
                                   active: snapshot.data![index]['active'],
-                                  cases: snapshot.data![index]['recover'],
-
-
+                                  test: snapshot.data![index]['tests'],
+                                  critical: snapshot.data![index]['critical'],
+                                  totalDeaths: snapshot.data![index]['todayDeaths'],
+                                  todayRecovered:  snapshot.data![index]['todayRecovered'],
                                 )));},
                                 child: ListTile(
                                   leading: Image(
